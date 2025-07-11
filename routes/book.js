@@ -31,4 +31,16 @@ router.get('/books', async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+router.post('/books', async (req, res) => {
+  try {
+    const { name, rate } = req.body;
+
+    const newBook = new Book({ name, rate });
+    const savedBook = await newBook.save();
+
+    res.status(201).json(savedBook);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
 module.exports=router;

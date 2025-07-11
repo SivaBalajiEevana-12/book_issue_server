@@ -13,10 +13,10 @@ router.get('/', async (req, res) => {
 });
 
 // POST a new stall
-router.post('/', async (req, res) => {
-  const { stallName, inCharge, phone } = req.body;
+router.post('/user', async (req, res) => {
+  const { stallName, personInCharge, phone } = req.body;
 
-  const newStall = new Stall({ stallName, inCharge, phone });
+  const newStall = new Stall({ stallName, personInCharge, phone });
 
   try {
     const savedStall = await newStall.save();
